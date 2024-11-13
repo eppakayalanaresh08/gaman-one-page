@@ -1,0 +1,46 @@
+[12-Nov-2024 11:31:40 UTC] PHP Warning:  Undefined array key "nameid" in /home/techadli/gamanspineandpain.com/send_email.php on line 4
+[12-Nov-2024 11:31:40 UTC] PHP Deprecated:  strip_tags(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 4
+[12-Nov-2024 11:31:40 UTC] PHP Warning:  Undefined array key "phoneid" in /home/techadli/gamanspineandpain.com/send_email.php on line 5
+[12-Nov-2024 11:31:40 UTC] PHP Deprecated:  strip_tags(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 5
+[12-Nov-2024 11:31:40 UTC] PHP Warning:  Undefined array key "emailid" in /home/techadli/gamanspineandpain.com/send_email.php on line 6
+[12-Nov-2024 11:31:40 UTC] PHP Deprecated:  strip_tags(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 6
+[12-Nov-2024 11:32:03 UTC] PHP Warning:  Undefined array key "nameid" in /home/techadli/gamanspineandpain.com/send_email.php on line 4
+[12-Nov-2024 11:32:03 UTC] PHP Deprecated:  strip_tags(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 4
+[12-Nov-2024 11:32:03 UTC] PHP Warning:  Undefined array key "phoneid" in /home/techadli/gamanspineandpain.com/send_email.php on line 5
+[12-Nov-2024 11:32:03 UTC] PHP Deprecated:  strip_tags(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 5
+[12-Nov-2024 11:32:03 UTC] PHP Warning:  Undefined array key "emailid" in /home/techadli/gamanspineandpain.com/send_email.php on line 6
+[12-Nov-2024 11:32:03 UTC] PHP Deprecated:  strip_tags(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 6
+[12-Nov-2024 11:32:14 UTC] PHP Warning:  Undefined array key "nameid" in /home/techadli/gamanspineandpain.com/send_email.php on line 4
+[12-Nov-2024 11:32:14 UTC] PHP Deprecated:  strip_tags(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 4
+[12-Nov-2024 11:32:14 UTC] PHP Warning:  Undefined array key "phoneid" in /home/techadli/gamanspineandpain.com/send_email.php on line 5
+[12-Nov-2024 11:32:14 UTC] PHP Deprecated:  strip_tags(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 5
+[12-Nov-2024 11:32:14 UTC] PHP Warning:  Undefined array key "emailid" in /home/techadli/gamanspineandpain.com/send_email.php on line 6
+[12-Nov-2024 11:32:14 UTC] PHP Deprecated:  strip_tags(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 6
+[12-Nov-2024 12:11:33 UTC] PHP Warning:  require(vendor/autoload.php): Failed to open stream: No such file or directory in /home/techadli/gamanspineandpain.com/contact_form_handler.php on line 7
+[12-Nov-2024 12:11:33 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/techadli/gamanspineandpain.com/contact_form_handler.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/techadli/gamanspineandpain.com/contact_form_handler.php on line 7
+[12-Nov-2024 12:12:21 UTC] PHP Warning:  require(vendor/autoload.php): Failed to open stream: No such file or directory in /home/techadli/gamanspineandpain.com/contact_form_handler.php on line 7
+[12-Nov-2024 12:12:21 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/techadli/gamanspineandpain.com/contact_form_handler.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/techadli/gamanspineandpain.com/contact_form_handler.php on line 7
+[12-Nov-2024 12:31:11 UTC] PHP Warning:  Undefined array key "name" in /home/techadli/gamanspineandpain.com/send_email.php on line 5
+[12-Nov-2024 12:31:11 UTC] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 5
+[12-Nov-2024 12:31:11 UTC] PHP Warning:  Undefined array key "phone" in /home/techadli/gamanspineandpain.com/send_email.php on line 6
+[12-Nov-2024 12:31:11 UTC] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 6
+[12-Nov-2024 12:31:11 UTC] PHP Warning:  Undefined array key "email" in /home/techadli/gamanspineandpain.com/send_email.php on line 7
+[12-Nov-2024 12:31:11 UTC] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 7
+[12-Nov-2024 12:31:21 UTC] PHP Warning:  Undefined array key "name" in /home/techadli/gamanspineandpain.com/send_email.php on line 5
+[12-Nov-2024 12:31:21 UTC] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 5
+[12-Nov-2024 12:31:21 UTC] PHP Warning:  Undefined array key "phone" in /home/techadli/gamanspineandpain.com/send_email.php on line 6
+[12-Nov-2024 12:31:21 UTC] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 6
+[12-Nov-2024 12:31:21 UTC] PHP Warning:  Undefined array key "email" in /home/techadli/gamanspineandpain.com/send_email.php on line 7
+[12-Nov-2024 12:31:21 UTC] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 7
+[12-Nov-2024 12:33:26 UTC] PHP Warning:  Undefined array key "name" in /home/techadli/gamanspineandpain.com/send_email.php on line 5
+[12-Nov-2024 12:33:26 UTC] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 5
+[12-Nov-2024 12:33:26 UTC] PHP Warning:  Undefined array key "phone" in /home/techadli/gamanspineandpain.com/send_email.php on line 6
+[12-Nov-2024 12:33:26 UTC] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 6
+[12-Nov-2024 12:33:26 UTC] PHP Warning:  Undefined array key "email" in /home/techadli/gamanspineandpain.com/send_email.php on line 7
+[12-Nov-2024 12:33:26 UTC] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in /home/techadli/gamanspineandpain.com/send_email.php on line 7

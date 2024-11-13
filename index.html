@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Laralink">
+    <!-- Favicon Icon -->
+    <link rel="icon" href="assets/images/gaman-logo.png">
+    <!-- Site Title -->
+    <title>Gaman Pain Management </title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/animated-text.css">
+    <link rel="stylesheet" href="assets/css/slick.min.css">
+    <link rel="stylesheet" href="assets/css/light_gallery.min.css">
+    <link rel="stylesheet" href="assets/css/odometer.css">
+    <link rel="stylesheet" href="assets/css/timepicker.min.css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="assets/css/select2.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+   <style>
+    /* Toast Message General Styles */
+.toast {
+    position: fixed;           /* Fix position relative to the viewport */
+    top: 20px;                 /* Distance from the top of the screen */
+    right: 20px;               /* Distance from the right side of the screen */
+    background-color: #28a745; /* Green background for success */
+    color: white;              /* White text */
+    padding: 10px 20px;        /* Padding inside the toast */
+    border-radius: 5px;        /* Rounded corners */
+    display: none;             /* Hidden by default */
+    z-index: 9999;             /* Ensure the toast is on top of other elements */
+    font-size: 16px;           /* Font size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for effect */
+}
+
+/* Error Toast Style */
+#toast-error {
+    background-color: #dc3545; /* Red background for error */
+}
+
+/* Animation for the toast to make it appear and disappear */
+.toast.show {
+    animation: fadeInOut 3s ease-in-out; /* Toast will fade in and out */
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateX(100%); /* Start from the right side */
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(0); /* Move to the regular position */
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(100%); /* Fade out to the right */
+    }
+}
+
+   </style>
+  </head>
+  <body>
+  <!-- Start Preloader -->
+  <div class="cs_preloader cs_accent_color_v1">
+    <div class="cs_preloader_in">
+      <div class="cs_wave_first">
+        <svg enable-background="new 0 0 300.08 300.08" viewBox="0 0 300.08 300.08" xmlns="http://www.w3.org/2000/svg"><g><path d="m293.26 184.14h-82.877l-12.692-76.138c-.546-3.287-3.396-5.701-6.718-5.701-.034 0-.061 0-.089 0-3.369.027-6.199 2.523-6.677 5.845l-12.507 87.602-14.874-148.69c-.355-3.43-3.205-6.056-6.643-6.138-.048 0-.096 0-.143 0-3.39 0-6.274 2.489-6.752 5.852l-19.621 137.368h-9.405l-12.221-42.782c-.866-3.028-3.812-5.149-6.8-4.944-3.13.109-5.777 2.332-6.431 5.395l-8.941 42.332h-73.049c-3.771 0-6.82 3.049-6.82 6.82 0 3.778 3.049 6.82 6.82 6.82h78.566c3.219 0 6.002-2.251 6.67-5.408l4.406-20.856 6.09 21.313c.839 2.939 3.526 4.951 6.568 4.951h20.46c3.396 0 6.274-2.489 6.752-5.845l12.508-87.596 14.874 148.683c.355 3.437 3.205 6.056 6.643 6.138h.143c3.39 0 6.274-2.489 6.752-5.845l14.227-99.599 6.397 38.362c.546 3.287 3.396 5.702 6.725 5.702h88.66c3.771 0 6.82-3.049 6.82-6.82-.001-3.772-3.05-6.821-6.821-6.821z"></path></g>
+        </svg>
+      </div>
+      <div class="cs_wave_second">
+        <svg enable-background="new 0 0 300.08 300.08" viewBox="0 0 300.08 300.08" xmlns="http://www.w3.org/2000/svg"><g><path d="m293.26 184.14h-82.877l-12.692-76.138c-.546-3.287-3.396-5.701-6.718-5.701-.034 0-.061 0-.089 0-3.369.027-6.199 2.523-6.677 5.845l-12.507 87.602-14.874-148.69c-.355-3.43-3.205-6.056-6.643-6.138-.048 0-.096 0-.143 0-3.39 0-6.274 2.489-6.752 5.852l-19.621 137.368h-9.405l-12.221-42.782c-.866-3.028-3.812-5.149-6.8-4.944-3.13.109-5.777 2.332-6.431 5.395l-8.941 42.332h-73.049c-3.771 0-6.82 3.049-6.82 6.82 0 3.778 3.049 6.82 6.82 6.82h78.566c3.219 0 6.002-2.251 6.67-5.408l4.406-20.856 6.09 21.313c.839 2.939 3.526 4.951 6.568 4.951h20.46c3.396 0 6.274-2.489 6.752-5.845l12.508-87.596 14.874 148.683c.355 3.437 3.205 6.056 6.643 6.138h.143c3.39 0 6.274-2.489 6.752-5.845l14.227-99.599 6.397 38.362c.546 3.287 3.396 5.702 6.725 5.702h88.66c3.771 0 6.82-3.049 6.82-6.82-.001-3.772-3.05-6.821-6.821-6.821z"></path></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <!-- End Preloader -->
+  <!-- Start Header Section -->
+  <header class="cs_site_header cs_style_1 cs_sticky_header">
+    <div class="cs_top_header cs_accent_bg_v1">
+      <div class="container">
+        <div class="cs_top_header_in">
+          <div class="cs_top_header_left">
+           <div class="cs_top_nav cs_fs_16 cs_white_color">
+              <i class="fa-solid fa-location-dot"></i>Manasa Sarovar, near Central Staff Quarters, Indra Nagar, Madhava Reddy Colony, Gachibowli, Hyderabad, Telangana 500032
+            </div>
+          </div>
+          <div class="cs_top_header_right">
+           <ul class="cs_top_nav  cs_mp0">
+              <!-- <li><a href="#">Live Chat </a></li>
+              <li><a href="#">Support</a></li> -->
+              <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="cs_social_btns cs_style_1">
+              <a href="https://www.facebook.com/GamanPainCare" target="_blank"> <i class="fa-brands fa-facebook-f"></i></a>
+              <!--<a href="https://dribbble.com/" target="_blank"> <i class="fa-brands fa-dribbble"></i></a>-->
+              <a href="https://www.youtube.com/@GamanPainCare" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+              <a href="https://www.instagram.com/gaman_paincare" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cs_main_header">
+      <div class="container">
+        <div class="cs_main_header_in">
+          <div class="cs_main_header_left">
+            <a class="cs_site_branding" href="index.html">
+              <img src="assets/images/gaman-logo.png" alt="Logo">
+            </a>
+            <div class="cs_nav cs_primary_font">
+              <ul class="cs_nav_list cs_fs_18">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#doctors">Doctors</a></li>
+                <!-- <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#pricing">Pricing</a></li> -->
+                <!-- <li class="menu_item_has_children"><a href="#blog">Blog</a> -->
+                  <ul>
+                  <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
+                  <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
+                  <li><a href="blog-list.html">Blog List</a></li>
+                  <li><a href="blog-grid.html">Blog Grid</a></li>
+                  <li><a href="blog-details-right-sidebar.html">Blog Details Right Sidebar</a></li>
+                  <li><a href="blog-details-left-sidebar.html">Blog Details Left Sidebar</a></li>
+                  <li><a href="blog-details-no-sidebar.html">Blog Details No Sidebar</a></li>
+                </ul>
+                </li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="cs_main_header_right cs_accent_color_v1">
+            <div class="cs_header_contact">
+              <div class="cs_header_contact_icon text-accent">
+               <img src="assets/images/icons/phone_icon_3.svg" alt="">
+              </div>
+              <div class="cs_header_contact_right">
+                <h3 class="cs_fs_14 cs_normal cs_accent_color_v1 mb-0">Need help?</h3>
+                <a href="tel:+919666525208">
+                  <h3 class="cs_fs_14 cs_normal cs_accent_color_v1 mb-0">+91 9666525208</h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- End Header Section -->
+  <!-- Start Hero Section -->
+    <div class="cs_hero cs_style_6 cs_ripple_version jquery-ripples cs_bg_filed position-relative" id="home" data-src="assets/images/hero_bg_12.jpeg">
+      <div class="container">
+        <div class="cs_hero_text">
+          <h1 class="cs_hero_title cs_headline slide cs_fs_60 cs_semibold">Growth Factor Concentrate <br>  <span class="cs_words_wrapper">
+            <b class="is-visible">for Knee Pain</b>
+            <!-- <b>Laboratory.</b>
+            <b>Cardiology.</b>
+            <b>Dentist.</b>
+            <b>Neurology.</b> -->
+          </span></h1>
+          <!-- <div class="cs_hero_subtitle cs_fs_18">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Tempor incididunt ut labore et dolore magna.</div> -->
+          <div class="cs_hero_btn_group">
+            <a href="#appointment" class="cs_btn cs_style_1 cs_accent_bg_v1 cs_fs_18 cs_medium cs_white_color cs_size_md">Appointment</a>
+          </div>
+        </div>
+      </div>
+      <canvas></canvas>
+    </div>
+  <!-- End Hero Section -->
+  <!-- Start About Section -->
+   <section class="cs_about cs_style_1" id="about">
+    <div class="cs_height_120 cs_height_lg_80"></div>
+    <div class="container">
+      <div class="row cs_gap_y_40 align-items-center">
+        <div class="col-lg-6">
+          <div class="cs_about_thumb wow fadeInLeft">
+            <img src="assets/images/Reviews-img-2.webp" alt="About Thumb">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="cs_pl_30">
+            <div class="cs_section_heading cs_style_1">
+              <h3 class="cs_section_title_up cs_accent_color_v1 cs_semibold cs_fs_18">About Gaman</h3>
+              <h2 class="cs_section_title cs_semibold cs_fs_35 mb-0">Gaman Pain Care Center</h2>
+            </div>
+            <div class="cs_height_32 cs_height_lg_20"></div>
+              <p class="cs_about_text"> is where compassionate care meets cutting-edge pain management. Our mission is to enhance the quality of life for patients suffering from acute, chronic, and cancer-related pain. We specialize in non-surgical interventions, utilizing the latest clinically-proven pain management techniques. </p>
+            <ul class="cs_list cs_style_1 cs_mp0 cs_primary_color cs_medium">
+              <li>
+                <i class="fa-solid fa-circle-check cs_accent_color_v1"></i>
+                Comprehensive Care</li>
+              <li>
+                <i class="fa-solid fa-circle-check cs_accent_color_v1"></i>
+                Multidisciplinary Care</li>
+              <li>
+                <!-- <i class="fa-solid fa-circle-check cs_accent_color_v1"></i>
+                Creating a good medic-sets.
+              </li> -->
+            </ul>
+              <div class="cs_review_progress_wrap">
+                <div class="cs_progress_text">
+                  <h3 class="cs_fs_20 cs_semibold mb-0">Qualified Doctors</h3>
+                </div>
+                <div class="cs_progress_container">
+                  <div class="cs_progress" data-progress="85">
+                    <div class="cs_progress_percentage">
+                      <div class="progress_value"><span>85%</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cs_author_card">
+                <div class="cs_author_thumb cs_center">
+                  <img src="assets/images/Dr-Nandakishor-2-1.webp" alt="Author">
+                </div>
+                <div class="cs_author_info">
+                  <h3 class="cs_author_title cs_fs_20 cs_semibold">
+                    Dr. Nandakishore Yerramsetti</h3>
+                  <p class="mb-0"> Managing Director </p>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cs_height_120 cs_height_lg_80"></div>
+  </section>
+  <!-- End About Section -->
+  <!-- Start Counter Section -->
+  <section class="cs_counting cs_bg_filed cs_primary_bg" data-src="assets/images/counter_bg.jpeg">
+    <div class="cs_height_133 cs_height_lg_80"></div>
+    <div class="container-fluid">
+      <div class="row cs_gap_y_40 align-items-center justify-content-between">
+        <div class="col-xl-3 col-md-6">
+          <div class="cs_funfact cs_style_1">
+            <div class="cs_funfact_icon cs_center">
+              <img src="assets/images/icons/funfact_icon_1.png" alt="Icon">
+            </div>
+            <div class="cs_funfact_text">
+              <h2 class="cs_counter_number cs_fs_65 cs_white_color d-flex align-items-center cs_semibold"><span
+                  data-count-to="10" class="odometer"></span>k</h2>
+              <p class="cs_counter_title cs_fs_24 cs_semibold cs_white_color mb-0">Pain Procedures</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+          <div class="cs_funfact cs_style_1">
+            <div class="cs_funfact_icon cs_center">
+              <img src="assets/images/icons/funfact_icon_2.png" alt="Icon">
+            </div>
+            <div class="cs_funfact_text">
+              <h2 class="cs_counter_number cs_fs_65 cs_white_color d-flex align-items-center cs_semibold"><span data-count-to="25" class="odometer"></span>K</h2>
+              <p class="cs_counter_title cs_fs_24 cs_semibold cs_white_color mb-0">Happy Patients</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+          <div class="cs_funfact cs_style_1">
+            <div class="cs_funfact_icon cs_center">
+              <img src="assets/images/icons/funfact_icon_3.png" alt="Icon">
+            </div>
+            <div class="cs_funfact_text">
+              <h2 class="cs_counter_number cs_fs_65 cs_white_color d-flex align-items-center cs_semibold"><span
+                  data-count-to="15" class="odometer"></span>+</h2>
+              <p class="cs_counter_title cs_fs_24 cs_semibold cs_white_color mb-0">Years of Expertise</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+          <div class="cs_funfact cs_style_1">
+            <div class="cs_funfact_icon cs_center">
+              <img src="assets/images/icons/funfact_icon_4.png" alt="Icon">
+            </div>
+            <div class="cs_funfact_text">
+              <h2 class="cs_counter_number cs_fs_65 cs_white_color d-flex align-items-center cs_semibold"><span
+                  data-count-to="20" class="odometer"></span>+</h2>
+              <p class="cs_counter_title cs_fs_24 cs_semibold cs_white_color mb-0">Awards</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cs_height_133 cs_height_lg_80"></div>
+  </section>
+  <!-- End Counter Section -->
+  <!-- Start Service Section -->
+  <section id="services">
+    <div class="cs_height_120 cs_height_lg_80"></div>
+    <div class="container">
+      <div class="cs_section_heading cs_style_1 text-center">
+        <h3 class="cs_section_title_up cs_accent_color_v1 cs_semibold cs_fs_24">Pain Conditions Treated
+        </h3>
+        <h2 class="cs_section_title cs_semibold cs_fs_45 wow fadeInUp mb-0" style="font-size: 20px;">
+          
+          Gaman Pain Management Centers offers a wide range of treatment options for chronic pains.
+          <br/>
+with advanced non-surgical treatment options.
+
+
+          <!-- We're Providing Best Services <br> To Our Customers -->
+        
+        </h2>
+      </div>
+      <div class="cs_height_63 cs_height_lg_40"></div>
+    </div>
+    <div class="container">
+      <div class="cs_tabs">
+        <ul class="cs_tab_links cs_style_1 cs_mp0">
+          <li >
+            <a href="#crutches">
+              <img src="assets/images/pain/Knee-2.webp" alt="Icon">
+              <span>Knee Pain
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#x_ray">
+              <img src="assets/images/pain/Back-Pain-1.webp" alt="Icon">
+              <span>Back Pain
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#pulmonary">
+              <img src="assets/images/pain/Shoulder-2.webp" alt="Icon">
+              <span>Shoulder Pain
+
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#cardiology">
+              <img src="assets/images/pain/Elbow.webp" alt="Icon">
+              <span>Elbow, Hand & Wrist Pain
+              </span>
+            </a>
+          </li>
+          <li class="active">
+            <a href="#dental">
+              <img src="assets/images/pain/FOOT-ANKLE-PAIN.webp" alt="Icon">
+              <span>Foot & Ankle Pain
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#neurology">
+              <img src="assets/images/pain/DISC-PROLAPSE-1.webp" alt="Icon">
+              <span>Muscle Spasms
+
+              </span>
+            </a>
+          </li>
+        </ul>
+        <div class="cs_height_50 cs_height_lg_40"></div>
+        <div class="tab-content">
+          <div id="crutches" class="cs_tab active">
+            <div class="cs_card cs_style_1 cs_white_bg cs_radius_5">
+              <div class="row cs_gap_y_20">
+                <div class="col-lg-7">
+                  <div class="cs_card_text">
+                    <h2 class="cs_card_title cs_fs_35 cs_semibold">Best Non Surgical
+                      Knee Pain Treatment
+                      in Hyderabad
+                      </h2>
+                    <p class="cs_card_subtitle">At Gaman Pain Care Center, we specialize in providing effective non-surgical treatments for knee pain, designed to improve mobility, reduce discomfort, and enhance overall joint health. Our approach is rooted in a holistic, patient-centric philosophy, combining advanced medical expertise with personalized care.
+
+                      
+                      </p>
+                    <h3 class="cs_list_title cs_fs_20 cs_bold cs_accent_color_v1">Quick Amenities in</h3>
+                    <ul class="cs_list cs_style_2 cs_mp0 cs_fs_18 cs_primary_color cs_semibold">
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Qualified Doctors
+                      </li>
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        24 Hours Service
+                      </li>
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Need Emergency
+                      </li>
+                      <!-- <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Nose and Sinus
+                      </li> -->
+                      <!-- <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Throat / Larynx Surgery
+                      </li> -->
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Mission statement
+                      </li>
+                    </ul>
+                    <a href="#" class="cs_btn cs_style_1 cs_size_md cs_fs_18 cs_semibold cs_accent_bg_v1 cs_white_color">Read More</a>
+                  </div>
+                </div>
+                <div class="col-lg-5 text-end">
+                  <div class="cs_card_thumb cs_radius_5">
+                    <img src="assets/images/servies/3-28.webp" alt="Department Image">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="x_ray" class="cs_tab">
+            <div class="cs_card cs_style_1 cs_white_bg cs_radius_5">
+              <div class="row cs_gap_y_20">
+                <div class="col-lg-7">
+                  <div class="cs_card_text">
+                    <h2 class="cs_card_title cs_fs_35 cs_semibold">Best
+                      Back Pain Treatment
+                      in Hyderabad</h2>
+                    <p class="cs_card_subtitle">At Gaman Pain Care Center, we provide comprehensive and advanced non-surgical treatments for back pain that focus on relieving discomfort, improving mobility, and restoring quality of life. Back pain, whether caused by injury, poor posture, degenerative conditions, or stress, can severely affect your ability to function. Our expert team of pain specialists works together to provide targeted therapies that help you manage and alleviate your pain without resorting to invasive surgery.</p>
+                    <h3 class="cs_list_title cs_fs_20 cs_bold cs_accent_color_v1">Quick Amenities in</h3>
+                    <ul class="cs_list cs_style_2 cs_mp0 cs_fs_18 cs_primary_color cs_semibold">
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Qualified Doctors
+                      </li>
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        24 Hours Service
+                      </li>
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Need Emergency
+                      </li>
+                   
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Mission statement
+                      </li>
+                    </ul>
+                    <a href="#" class="cs_btn cs_style_1 cs_size_md cs_fs_18 cs_semibold cs_accent_bg_v1 cs_white_color">Read More</a>
+                  </div>
+                </div>
+                <div class="col-lg-5 text-end">
+                  <div class="cs_card_thumb cs_radius_5">
+                    <img src="assets/images/servies/Caudal-Injections.webp" alt="Department Image">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="pulmonary" class="cs_tab">
+            <div class="cs_card cs_style_1 cs_white_bg cs_radius_5">
+              <div class="row cs_gap_y_20">
+                <div class="col-lg-7">
+                  <div class="cs_card_text">
+                    <h2 class="cs_card_title cs_fs_35 cs_semibold">Best Shoulder Pain
+                      Treatment
+                      in Hyderabad</h2>
+                    <p class="cs_card_subtitle">At Gaman Pain Care Center, we offer advanced, non-surgical treatments for shoulder pain, helping you regain mobility and live pain-free. Whether it's a rotator cuff injury, frozen shoulder, arthritis, or stiffness, our expert team provides personalized care tailored to your needs. Trust us to restore your shoulder health and get you back to doing what you love.</p>
+                    <h3 class="cs_list_title cs_fs_20 cs_bold cs_accent_color_v1">Quick Amenities in</h3>
+                    <ul class="cs_list cs_style_2 cs_mp0 cs_fs_18 cs_primary_color cs_semibold">
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Qualified Doctors
+                      </li>
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        24 Hours Service
+                      </li>
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Need Emergency
+                      </li>
+                     
+                      
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Mission statement
+                      </li>
+                    </ul>
+                    <a href="#" class="cs_btn cs_style_1 cs_size_md cs_fs_18 cs_semibold cs_accent_bg_v1 cs_white_color">Read More</a>
+                  </div>
+                </div>
+                <div class="col-lg-5 text-end">
+                  <div class="cs_card_thumb cs_radius_5">
+                    <img src="assets/images/servies/Epidural-Injections.webp" alt="Department Image">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="cardiology" class="cs_tab">
+            <div class="cs_card cs_style_1 cs_white_bg cs_radius_5">
+              <div class="row cs_gap_y_20">
+                <div class="col-lg-7">
+                  <div class="cs_card_text">
+                    <h2 class="cs_card_title cs_fs_35 cs_semibold">Best Elbow, Hand &
+                      Wrist Pain Treatment
+                      in Hyderabad</h2>
+                    <p class="cs_card_subtitle">At Gaman Pain Care Center, we provide expert, non-surgical treatments for elbow, hand, and wrist pain, helping you regain full functionality and relieve discomfort. Whether you're dealing with tennis elbow, carpal tunnel syndrome, arthritis, or tendonitis, our specialized team offers personalized care to address your unique needs. Trust us to restore your hand and upper limb health, so you can return to your daily activities pain-free.</p>
+                    <h3 class="cs_list_title cs_fs_20 cs_bold cs_accent_color_v1">Quick Amenities in</h3>
+                    <ul class="cs_list cs_style_2 cs_mp0 cs_fs_18 cs_primary_color cs_semibold">
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Qualified Doctors
+                      </li>
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        24 Hours Service
+                      </li>
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Need Emergency
+                      </li>
+                     
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Mission statement
+                      </li>
+                    </ul>
+                    <a href="#" class="cs_btn cs_style_1 cs_size_md cs_fs_18 cs_semibold cs_accent_bg_v1 cs_white_color">Read More</a>
+                  </div>
+                </div>
+                <div class="col-lg-5 text-end">
+                  <div class="cs_card_thumb cs_radius_5">
+                    <img src="assets/images/servies/hand.jpg" alt="Department Image">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="dental" class="cs_tab">
+            <div class="cs_card cs_style_1 cs_white_bg cs_radius_5">
+              <div class="row cs_gap_y_20">
+                <div class="col-lg-7">
+                  <div class="cs_card_text">
+                    <h2 class="cs_card_title cs_fs_35 cs_semibold">Best Foot &
+                      Ankle Pain Treatment
+                      in Hyderabad</h2>
+                    <p class="cs_card_subtitle">At Gaman Pain Care Center, we specialize in advanced, non-surgical treatments for foot and ankle pain, helping you regain mobility and alleviate discomfort. Whether you're suffering from plantar fasciitis, ankle sprains, arthritis, or tendonitis, our expert team provides customized care tailored to your condition. Trust us to restore your foot and ankle health, so you can get back to an active, pain-free lifestyle.</p>
+                    <h3 class="cs_list_title cs_fs_20 cs_bold cs_accent_color_v1">Quick Amenities in</h3>
+                    <ul class="cs_list cs_style_2 cs_mp0 cs_fs_18 cs_primary_color cs_semibold">
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Qualified Doctors
+                      </li>
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        24 Hours Service
+                      </li>
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Need Emergency
+                      </li>
+
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Mission statement
+                      </li>
+                    </ul>
+                    <a href="#" class="cs_btn cs_style_1 cs_size_md cs_fs_18 cs_semibold cs_accent_bg_v1 cs_white_color">Read More</a>
+                  </div>
+                </div>
+                <div class="col-lg-5 text-end">
+                  <div class="cs_card_thumb cs_radius_5">
+                    <img src="assets/images/servies/Prolotherapy-1.webp" alt="Department Image">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="neurology" class="cs_tab">
+            <div class="cs_card cs_style_1 cs_white_bg cs_radius_5">
+              <div class="row cs_gap_y_20">
+                <div class="col-lg-7">
+                  <div class="cs_card_text">
+                    <h2 class="cs_card_title cs_fs_35 cs_semibold">Best Muscle Spasms
+                      Treatment
+                      in Hyderabad</h2>
+                    <p class="cs_card_subtitle">At Gaman Pain Care Center, we offer effective treatments for muscle spasms, helping to relieve pain and restore normal muscle function. Whether caused by injury, stress, or overuse, our expert team provides personalized, non-surgical solutions to target the root cause of your discomfort. Let us help you get back to pain-free movement and a healthier lifestyle.</p>
+                    <h3 class="cs_list_title cs_fs_20 cs_bold cs_accent_color_v1">Quick Amenities in</h3>
+                    <ul class="cs_list cs_style_2 cs_mp0 cs_fs_18 cs_primary_color cs_semibold">
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Qualified Doctors
+                      </li>
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        24 Hours Service
+                      </li>
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Need Emergency
+                      </li>
+                     
+                      <li>
+                        <i><img src="assets/images/icons/checked_icon.svg" alt="Icon"></i>
+                        Mission statement
+                      </li>
+                    </ul>
+                    <a href="#" class="cs_btn cs_style_1 cs_size_md cs_fs_18 cs_semibold cs_accent_bg_v1 cs_white_color">Read More</a>
+                  </div>
+                </div>
+                <div class="col-lg-5 text-end">
+                  <div class="cs_card_thumb cs_radius_5">
+                    <img src="assets/images/servies/Transformainal-Inections.webp" alt="Department Image">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cs_height_120 cs_height_lg_80"></div>
+  </section>
+  <!-- End Service Section -->
+  <!-- Start Doctors Section -->
+  <section class="cs_accent_v1_light cs_bg_filed" id="doctors" data-src="assets/images/doctors_bg_1.png">
+    <div class="cs_height_120 cs_height_lg_80"></div>
+    <div class="container">
+      <div class="cs_section_heading cs_style_1 text-center">
+        <h3 class="cs_section_title_up cs_accent_color_v1 cs_semibold cs_fs_24">Our Doctors</h3>
+        <h2 class="cs_section_title cs_semibold cs_fs_45 wow fadeInUp mb-0">We provide Exceptional Medical <br> Care For Our Patients</h2>
+      </div>
+      <div class="cs_height_63 cs_height_lg_40"></div>
+      <div class="row cs_gap_y_30">
+        <div class="col-lg-3">
+          <div class="cs_doctor cs_style_1 cs_white_bg cs_radius_5">
+            <div class="cs_doctor_thumb position-relative">
+              <img src="assets/images/Dr-Nandakishor-2-1.webp" alt="Doctor Thumb">
+              <div class="cs_social_btns cs_style_1 cs_accent_bg_v1">
+                <a href="facebook.com" target="_blank" class="cs_center">
+                  <i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/" target="_blank" class="cs_center">
+                  <i class="fa-brands fa-instagram"></i></a>
+                <a href="https://twitter.com/" target="_blank" class="cs_center">
+                  <i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/" target="_blank" class="cs_center">
+                  <i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="cs_doctor_info text-center">
+              <h3 class="cs_doctor_title cs_fs_24 cs_semibold">
+                <a href="doctor-details.html">
+                  Dr.Nandakishore Yerramsetti</a></h3>
+              <p class="cs_doctor_subtitle mb-0">Managing Director & Rehab Specialist</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="cs_doctor cs_style_1 cs_white_bg cs_radius_5">
+            <div class="cs_doctor_thumb position-relative">
+              <img src="assets/images/Bharat-2-1.webp" alt="Doctor Thumb">
+              <div class="cs_social_btns cs_style_1 cs_accent_bg_v1">
+                <a href="facebook.com" target="_blank" class="cs_center">
+                  <i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/" target="_blank" class="cs_center">
+                  <i class="fa-brands fa-instagram"></i></a>
+                <a href="https://twitter.com/" target="_blank" class="cs_center">
+                  <i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/" target="_blank" class="cs_center">
+                  <i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="cs_doctor_info text-center">
+              <h3 class="cs_doctor_title cs_fs_24 cs_semibold"><a href="doctor-details.html">Dr. Bharat Chidige</a></h3>
+              <p class="cs_doctor_subtitle mb-0">Sr. Consultant Orthopedic Surgeon</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="cs_doctor cs_style_1 cs_white_bg cs_radius_5">
+            <div class="cs_doctor_thumb position-relative">
+              <img src="assets/images/Dr-Lav-kumar-2-1.webp" alt="Doctor Thumb">
+              <div class="cs_social_btns cs_style_1 cs_accent_bg_v1">
+                <a href="facebook.com" target="_blank" class="cs_center">
+                  <i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/" target="_blank" class="cs_center">
+                  <i class="fa-brands fa-instagram"></i></a>
+                <a href="https://twitter.com/" target="_blank" class="cs_center">
+                  <i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/" target="_blank" class="cs_center">
+                  <i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="cs_doctor_info text-center">
+              <h3 class="cs_doctor_title cs_fs_24 cs_semibold"><a href="doctor-details.html">Dr. Lavakumar Reddy Sirigiri</a></h3>
+              <p class="cs_doctor_subtitle mb-0">Sr. Consultant in Pain Management</p>
+            </div>
+          </div>
+        </div>
+                <div class="col-lg-3">
+          <div class="cs_doctor cs_style_1 cs_white_bg cs_radius_5">
+            <div class="cs_doctor_thumb position-relative">
+              <img src="assets/images/Dr-Lav-kumar-2-1.webp" alt="Doctor Thumb">
+              <div class="cs_social_btns cs_style_1 cs_accent_bg_v1">
+                <a href="facebook.com" target="_blank" class="cs_center">
+                  <i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/" target="_blank" class="cs_center">
+                  <i class="fa-brands fa-instagram"></i></a>
+                <a href="https://twitter.com/" target="_blank" class="cs_center">
+                  <i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/" target="_blank" class="cs_center">
+                  <i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="cs_doctor_info text-center">
+              <h3 class="cs_doctor_title cs_fs_24 cs_semibold"><a href="doctor-details.html">Dr. Thirupathi Rao Bandi</a></h3>
+              <p class="cs_doctor_subtitle mb-0">Sr. Consultant in Pain Management
+</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="cs_height_120 cs_height_lg_80"></div>
+  </section>
+  <!-- End Doctors Section  -->
+  <!-- Start Gallery Section !-->
+  <!-- <section id="gallery">
+    <div class="cs_height_120 cs_height_lg_80"></div>
+    <div class="container">
+      <div class="cs_section_heading cs_style_1 text-center">
+        <h3 class="cs_section_title_up cs_accent_color_v1 cs_semibold cs_fs_24 wow fadeInDown">Latest Projects</h3>
+        <h2 class="cs_section_title cs_semibold cs_fs_45 mb-0">Let's Checkout Our Recently <br>Completed Work</h2>
+      </div>
+      <div class="cs_height_45 cs_height_lg_30"></div>
+      <div class="cs_portfolio_wrapper">
+        <div class="cs_isotop_filter cs_style_1 text-center">
+          <ul class="cs_fs_18 cs_medium cs_primary_color cs_mp0">
+            <li class="active"><a href="#" data-filter="*">All</a></li>
+            <li><a href="#" data-filter=".cardiology">Cardiology</a></li>
+            <li><a href="#" data-filter=".neurology">Neurology</a></li>
+            <li><a href="#" data-filter=".pulmonary">Pulmonary</a></li>
+            <li><a href="#" data-filter=".traumatology">Traumatology</a></li>
+          </ul>
+        </div>
+        <div class="cs_isotop cs_isotop_col_4 cs_has_gutter_24 cs_gallery_list">
+          <div class="cs_grid_sizer"></div>
+          <div class="cs_isotop_item cs_w50 cardiology urology pulmonary">
+            <a href="assets/images/gallery_1.jpeg" class="cs_gallery_item cs_zoom position-relative">
+              <img src="assets/images/gallery_1.jpeg" alt="Gallery Image" class="cs_zoom_in">
+              <div class="cs_gallery_overlay position-absolute"></div>
+              <div class="cs_gallery_icon cs_accent_bg_v1 cs_center position-absolute">
+                <img src="assets/images/icons/plus_icon.svg" alt="Icon">
+              </div>
+            </a>
+          </div>
+          <div class="cs_isotop_item traumatology urology neurology">
+            <a href="assets/images/gallery_2.jpeg" class="cs_gallery_item cs_zoom position-relative">
+              <img src="assets/images/gallery_2.jpeg" alt="Gallery Image" class="cs_zoom_in">
+              <div class="cs_gallery_overlay position-absolute"></div>
+              <div class="cs_gallery_icon cs_accent_bg_v1 cs_center position-absolute">
+                <img src="assets/images/icons/plus_icon.svg" alt="Icon">
+              </div>
+            </a>
+          </div>
+          <div class="cs_isotop_item cardiology urology neurology">
+            <a href="assets/images/gallery_3.jpeg" class="cs_gallery_item cs_zoom position-relative">
+              <img src="assets/images/gallery_3.jpeg" alt="Gallery Image" class="cs_zoom_in">
+              <div class="cs_gallery_overlay position-absolute"></div>
+              <div class="cs_gallery_icon cs_accent_bg_v1 cs_center position-absolute">
+                <img src="assets/images/icons/plus_icon.svg" alt="Icon">
+              </div>
+            </a>
+          </div>
+          <div class="cs_isotop_item traumatology urology neurology">
+            <a href="assets/images/gallery_4.jpeg" class="cs_gallery_item cs_zoom position-relative">
+              <img src="assets/images/gallery_4.jpeg" alt="Gallery Image" class="cs_zoom_in">
+              <div class="cs_gallery_overlay position-absolute"></div>
+              <div class="cs_gallery_icon cs_accent_bg_v1 cs_center position-absolute">
+                <img src="assets/images/icons/plus_icon.svg" alt="Icon">
+              </div>
+            </a>
+          </div>
+          <div class="cs_isotop_item cardiology urology pulmonary">
+            <a href="assets/images/gallery_5.jpeg" class="cs_gallery_item cs_zoom position-relative">
+              <img src="assets/images/gallery_5.jpeg" alt="Gallery Image" class="cs_zoom_in">
+              <div class="cs_gallery_overlay position-absolute"></div>
+              <div class="cs_gallery_icon cs_accent_bg_v1 cs_center position-absolute">
+                <img src="assets/images/icons/plus_icon.svg" alt="Icon">
+              </div>
+            </a>
+          </div>
+          <div class="cs_isotop_item cs_w50 traumatology urology pulmonary">
+            <a href="assets/images/gallery_6.jpeg" class="cs_gallery_item cs_zoom position-relative">
+              <img src="assets/images/gallery_6.jpeg" alt="Gallery Image" class="cs_zoom_in">
+              <div class="cs_gallery_overlay position-absolute"></div>
+              <div class="cs_gallery_icon cs_accent_bg_v1 cs_center position-absolute">
+                <img src="assets/images/icons/plus_icon.svg" alt="Icon">
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cs_height_120 cs_height_lg_80"></div>
+  </section> -->
+  <!-- End Gallery Section -->
+  <!--Start Before after slider -->
+  <!-- <section class="cs_bg_filed"  data-src="assets/images/before_after_bg.jpeg">
+    <div class="cs_height_120 cs_height_lg_80"></div>
+    <div class="container">
+      <div class="cs_section_heading cs_style_1 text-center">
+        <h3 class="cs_section_title_up cs_accent_color_v1 cs_semibold cs_fs_24">Before and after</h3>
+        <h2 class="cs_section_title cs_semibold cs_fs_45 wow fadeIn mb-0">Before And After Procedures</h2>
+      </div>
+      <div class="cs_height_45 cs_height_lg_30"></div>
+    </div>
+    <div class="cs_before_after_wrap">
+      <div class="cs_half_bg"></div>
+      <div class="container">
+        <div class="cs_before_after-in">
+          <div class="cs_before_after">
+            <div class="cs_after cs_single_slide" data-src="assets/images/after.jpeg"></div>
+            <div class="cs_before cs_single_slide" data-src="assets/images/before.jpeg"></div>
+            <div class="cs_handle_before_after">
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!--End Before after slider -->
+  <!-- Start Pricing Section -->
+  <!-- <section class="cs_slider cs_style_1" id="pricing">
+    <div class="cs_height_120 cs_height_lg_80"></div>
+    <div class="container">
+      <div class="cs_slider_heading d-flex align-items-center justify-content-between">
+        <div class="cs_section_heading cs_style_1">
+          <h3 class="cs_section_title_up cs_semibold cs_fs_24 cs_accent_color_v1">Our Pricing Plan</h3>
+          <h2 class="cs_section_title cs_semibold cs_fs_45 mb-0">Our High Quality Easy Price</h2>
+        </div>
+        <div class="cs_slider_arrows cs_style_1 cs_hide_mobile wow fadeInUp">
+          <div class="cs_left_arrow cs_slider_arrow cs_accent_color_v1 cs_center slick-arrow"><i class="fa-solid fa-chevron-left"></i>
+          </div>
+          <div class="cs_right_arrow cs_slider_arrow cs_accent_color_v1 cs_center slick-arrow"><i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+      <div class="cs_height_60 cs_height_lg_40"></div>
+      <div class="cs_slider_container" data-autoplay="0" data-loop="1" data-speed="600" data-center="0" data-slides-per-view="responsive" data-xxs-slides="1" data-xs-slides="1" data-sm-slides="2" data-md-slides="2" data-lg-slides="3" data-add-slides="3">
+        <div class="cs_slider_wrapper">
+          <div class="slick_slide_in">
+            <div class="cs_pricing_table cs_style_1 cs_radius_5 cs_bg_filed position-relative" data-src="assets/images/pricing_bg.jpeg">
+              <div class="cs_pricing_overlay cs_primary_bg cs_bg_filed cs_radius_5" data-src="assets/images/pricing_overlay_bg.jpeg"></div>
+              <div class="cs_pricing_info">
+                <h2 class="cs_price cs_accent_color_v1 cs_fs_45 cs_medium">$119</h2>
+                <h3 class="cs_pricing_title cs_fs_28 cs_semibold mb-0">Hemoglobin Test</h3>
+              </div>
+              <ul class="cs_pricing_feature cs_mp0 cs_medium">
+                <li>
+                  <span class="cs_feature_icon cs_accent_color_v1">
+                    <i class="fa-solid fa-check"></i>                          
+                  </span>
+                  <span>Cancer Services</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_accent_color_v1">
+                    <i class="fa-solid fa-check"></i>                          
+                  </span>
+                  <span>Diagnostic Services</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_accent_color_v1">
+                    <i class="fa-solid fa-check"></i>                          
+                  </span>
+                  <span>Tooth Implants</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_accent_color_v1">
+                    <i class="fa-solid fa-check"></i>                          
+                  </span>
+                  <span>Surgical Extraction</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_red_color">
+                    <i class="fa-solid fa-xmark"></i>                          
+                  </span>
+                  <span>State And Federal Postings</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_red_color">
+                    <i class="fa-solid fa-xmark"></i>                         
+                  </span>
+                  <span>Second Description</span>
+                </li>
+              </ul>
+              <div class="cs_pricing_btn_wrap">
+                <a href="#" class="cs_btn cs_style_1 cs_accent_bg_v1 cs_fs_20 cs_semibold cs_white_color">Get started</a>
+              </div>
+            </div>
+          </div>
+          <div class="slick_slide_in">
+            <div class="cs_pricing_table cs_style_1 cs_radius_5 cs_bg_filed position-relative" data-src="assets/images/pricing_bg.jpeg">
+              <div class="cs_pricing_overlay cs_primary_bg cs_bg_filed cs_radius_5" data-src="assets/images/pricing_overlay_bg.jpeg"></div>
+              <div class="cs_pricing_info">
+                <h2 class="cs_price cs_accent_color_v1 cs_fs_45 cs_medium">$99</h2>
+                <h3 class="cs_pricing_title cs_fs_28 cs_semibold mb-0">Homocysteine</h3>
+              </div>
+              <ul class="cs_pricing_feature cs_mp0 cs_medium">
+                <li>
+                  <span class="cs_feature_icon cs_accent_color_v1">
+                    <i class="fa-solid fa-check"></i>                          
+                  </span>
+                  <span>Cancer Services</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_accent_color_v1">
+                    <i class="fa-solid fa-check"></i>                          
+                  </span>
+                  <span>Diagnostic Services</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_accent_color_v1">
+                    <i class="fa-solid fa-check"></i>                          
+                  </span>
+                  <span>Tooth Implants</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_accent_color_v1">
+                    <i class="fa-solid fa-check"></i>                          
+                  </span>
+                  <span>Surgical Extraction</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_red_color">
+                    <i class="fa-solid fa-xmark"></i>                          
+                  </span>
+                  <span>State And Federal Postings</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_red_color">
+                    <i class="fa-solid fa-xmark"></i>                         
+                  </span>
+                  <span>Second Description</span>
+                </li>
+              </ul>
+              <div class="cs_pricing_btn_wrap">
+                <a href="#" class="cs_btn cs_style_1 cs_accent_bg_v1 cs_fs_20 cs_semibold cs_white_color">Get started</a>
+              </div>
+            </div>
+          </div>
+          <div class="slick_slide_in">
+            <div class="cs_pricing_table cs_style_1 cs_radius_5 cs_bg_filed position-relative" data-src="assets/images/pricing_bg.jpeg">
+              <div class="cs_pricing_overlay cs_primary_bg cs_bg_filed cs_radius_5" data-src="assets/images/pricing_overlay_bg.jpeg"></div>
+              <div class="cs_pricing_info">
+                <h2 class="cs_price cs_accent_color_v1 cs_fs_45 cs_medium">$77</h2>
+                <h3 class="cs_pricing_title cs_fs_28 cs_semibold mb-0">Blood Test</h3>
+              </div>
+              <ul class="cs_pricing_feature cs_mp0 cs_medium">
+                <li>
+                  <span class="cs_feature_icon cs_accent_color_v1">
+                    <i class="fa-solid fa-check"></i>                          
+                  </span>
+                  <span>Cancer Services</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_accent_color_v1">
+                    <i class="fa-solid fa-check"></i>                          
+                  </span>
+                  <span>Diagnostic Services</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_accent_color_v1">
+                    <i class="fa-solid fa-check"></i>                          
+                  </span>
+                  <span>Tooth Implants</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_accent_color_v1">
+                    <i class="fa-solid fa-check"></i>                          
+                  </span>
+                  <span>Surgical Extraction</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_red_color">
+                    <i class="fa-solid fa-xmark"></i>                          
+                  </span>
+                  <span>State And Federal Postings</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_red_color">
+                    <i class="fa-solid fa-xmark"></i>                         
+                  </span>
+                  <span>Second Description</span>
+                </li>
+              </ul>
+              <div class="cs_pricing_btn_wrap">
+                <a href="#" class="cs_btn cs_style_1 cs_accent_bg_v1 cs_fs_20 cs_semibold cs_white_color">Get started</a>
+              </div>
+            </div>
+          </div>
+          <div class="slick_slide_in">
+            <div class="cs_pricing_table cs_style_1 cs_radius_5 cs_bg_filed position-relative" data-src="assets/images/pricing_bg.jpeg">
+              <div class="cs_pricing_overlay cs_primary_bg cs_bg_filed cs_radius_5" data-src="assets/images/pricing_overlay_bg.jpeg"></div>
+              <div class="cs_pricing_info">
+                <h2 class="cs_price cs_accent_color_v1 cs_fs_45 cs_medium">$119</h2>
+                <h3 class="cs_pricing_title cs_fs_28 cs_semibold mb-0">Hemoglobin Test</h3>
+              </div>
+              <ul class="cs_pricing_feature cs_mp0 cs_medium">
+                <li>
+                  <span class="cs_feature_icon cs_accent_color_v1">
+                    <i class="fa-solid fa-check"></i>                          
+                  </span>
+                  <span>Cancer Services</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_accent_color_v1">
+                    <i class="fa-solid fa-check"></i>                          
+                  </span>
+                  <span>Diagnostic Services</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_accent_color_v1">
+                    <i class="fa-solid fa-check"></i>                          
+                  </span>
+                  <span>Tooth Implants</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_accent_color_v1">
+                    <i class="fa-solid fa-check"></i>                          
+                  </span>
+                  <span>Surgical Extraction</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_red_color">
+                    <i class="fa-solid fa-xmark"></i>                          
+                  </span>
+                  <span>State And Federal Postings</span>
+                </li>
+                <li>
+                  <span class="cs_feature_icon cs_red_color">
+                    <i class="fa-solid fa-xmark"></i>                         
+                  </span>
+                  <span>Second Description</span>
+                </li>
+              </ul>
+              <div class="cs_pricing_btn_wrap">
+                <a href="#" class="cs_btn cs_style_1 cs_accent_bg_v1 cs_fs_20 cs_semibold cs_white_color">Get started</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cs_slider_arrows cs_style_1 cs_hide_desktop">
+          <div class="cs_left_arrow cs_slider_arrow cs_accent_color_v1 cs_center slick-arrow"><i class="fa-solid fa-chevron-left"></i>
+          </div>
+          <div class="cs_right_arrow cs_slider_arrow cs_accent_color_v1 cs_center slick-arrow"><i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cs_height_120 cs_height_lg_80"></div>
+  </section> -->
+  <!-- End Pricing Section -->
+  <!-- Start FAQ Section -->
+  <!--<section class="cs_bg_filed" id="appointment" data-src="assets/images/appointment_bg.jpeg">-->
+  <!--  <div class="cs_height_120 cs_height_lg_80"></div>-->
+  <!--  <div class="container">-->
+  <!--    <div class="row cs_gap_y_30">-->
+  <!--      <div class="col-lg-6">-->
+  <!--        <div class="cs_accordian_wrap">-->
+  <!--          <div class="cs_section_heading cs_style_1">-->
+  <!--            <h3 class="cs_section_title_up cs_accent_color_v1 cs_medium cs_fs_20">People Also Ask</h3>-->
+  <!--            <h2 class="cs_section_title cs_semibold cs_fs_35 mb-0">Frequently Asked Questions</h2>-->
+  <!--          </div>-->
+  <!--          <div class="cs_height_40 cs_height_lg_30"></div>-->
+  <!--          <div class="cs_accordian cs_style_1 cs_white_bg">-->
+  <!--            <h3 class="cs_accordian_head cs_fs_18 cs_medium mb-0">-->
+  <!--              What medical expenses are not tax deductible?-->
+  <!--              <span class="cs_accordian_toggle cs_center">-->
+  <!--                <i class="fa-regular fa-eye"></i>-->
+  <!--                 <i class="fa-regular fa-eye-slash"></i>-->
+  <!--              </span>-->
+  <!--            </h3>-->
+  <!--            <div class="cs_accordian_body">-->
+  <!--              There are many variations of passages of available but the Ut elit tellus luctus nec ullamcorper at mattis, there are many variations of passages of available but the Ut elit tellus luctus nec ullamcorper at mattis.-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--          <div class="cs_accordian cs_style_1 cs_white_bg active">-->
+  <!--            <h3 class="cs_accordian_head cs_fs_18 cs_medium mb-0">-->
+  <!--              Are dental expenses deductible 2023?-->
+  <!--                <span class="cs_accordian_toggle cs_center">-->
+  <!--                  <i class="fa-regular fa-eye"></i>-->
+  <!--                  <i class="fa-regular fa-eye-slash"></i>-->
+  <!--                </span>-->
+  <!--            </h3>-->
+  <!--            <div class="cs_accordian_body">-->
+  <!--              There are many variations of passages of available but the Ut elit tellus luctus nec ullamcorper at mattis, there are many variations of passages of available but the Ut elit tellus luctus nec ullamcorper at mattis.-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--          <div class="cs_accordian cs_style_1 cs_white_bg">-->
+  <!--            <h3 class="cs_accordian_head cs_fs_18 cs_medium mb-0">-->
+  <!--              What is the standard deduction for 2023 for over 65?-->
+  <!--              <span class="cs_accordian_toggle cs_center">-->
+  <!--                <i class="fa-regular fa-eye"></i>-->
+  <!--                <i class="fa-regular fa-eye-slash"></i>-->
+  <!--              </span>-->
+  <!--            </h3>-->
+  <!--            <div class="cs_accordian_body">-->
+  <!--              There are many variations of passages of available but the Ut elit tellus luctus nec ullamcorper at mattis, there are many variations of passages of available but the Ut elit tellus luctus nec ullamcorper at mattis.-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--          <div class="cs_accordian cs_style_1 cs_white_bg">-->
+  <!--            <h3 class="cs_accordian_head cs_fs_18 cs_medium mb-0">-->
+  <!--              What qualifies as a qualified medical expense?-->
+  <!--                <span class="cs_accordian_toggle cs_center">-->
+  <!--                  <i class="fa-regular fa-eye"></i>-->
+  <!--                  <i class="fa-regular fa-eye-slash"></i>-->
+  <!--                </span>-->
+  <!--            </h3>-->
+  <!--            <div class="cs_accordian_body">-->
+  <!--              There are many variations of passages of available but the Ut elit tellus luctus nec ullamcorper at mattis, there are many variations of passages of available but the Ut elit tellus luctus nec ullamcorper at mattis.-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--      <div class="col-lg-6">-->
+  <!--        <div class="cs_appointment_wrap">-->
+  <!--          <div class="cs_section_heading cs_style_1">-->
+  <!--            <h3 class="cs_section_title_up cs_accent_color_v1 cs_medium cs_fs_20">Get Appointment</h3>-->
+  <!--            <h2 class="cs_section_title cs_semibold cs_fs_35 mb-0">Book An Online Appointment</h2>-->
+  <!--          </div>-->
+  <!--          <div class="cs_height_40 cs_height_lg_30"></div>-->
+  <!--          <form class="ca_appointment_form row cs_gap_y_24">-->
+  <!--            <div class="col-md-12">-->
+  <!--              <div class="cs_input_field">-->
+  <!--                <input type="text"  name="name"  placeholder="Name" class="cs_form_field cs_radius_5">-->
+  <!--                <span><i class="fa-solid fa-user"></i></span>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <!--            <div class="col-md-6">-->
+  <!--              <div class="cs_input_field">-->
+  <!--                <input type="text"  name="phone"  placeholder="Phone" class="cs_form_field cs_radius_5">-->
+  <!--                <span><i class="fa-solid fa-phone"></i></span>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <!--            <div class="col-md-6">-->
+  <!--              <div class="cs_input_field">-->
+  <!--                <input type="email"  name="email"  placeholder="Email Address" class="cs_form_field cs_radius_5">-->
+  <!--                <span><i class="fa-solid fa-envelope"></i></span>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <!--            <div class="col-md-6">-->
+  <!--              <div class="cs_custom_select_wrap">-->
+  <!--                <select name="udoctor" class="cs_select_1">-->
+  <!--                  <option value="select-doctor">Select Doctor</option>-->
+  <!--                  <option value="mak-rushi">Dr. Mak Roshi</option>-->
+  <!--                  <option value="mohoshin-kabir">Dr. Mohoshin Kabir</option>-->
+  <!--                  <option value="nayon-borua">Dr. Nayon Borua</option>-->
+  <!--                  <option value="rasel-islam">Dr. Rasel Islam</option>-->
+  <!--                  <option value="mahid-islam">Dr. Mahid Islam</option>-->
+  <!--                </select>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <!--            <div class="col-md-6">-->
+  <!--              <div class="cs_custom_select_wrap">-->
+  <!--                <select name="udepartment" class="cs_select_1">-->
+  <!--                  <option value="select-department">Select Department</option>-->
+  <!--                  <option value="crutches">Crutches</option>-->
+  <!--                  <option value="x-Ray">X-Ray</option>-->
+  <!--                  <option value="pulmonary">Pulmonary</option>-->
+  <!--                  <option value="cardiology">Cardiology</option>-->
+  <!--                  <option value="dental-care">Dental Care</option>-->
+  <!--                  <option value="neurology">Neurology</option>-->
+  <!--                </select>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <!--            <div class="col-md-6">-->
+  <!--              <div class="cs_input_field">-->
+  <!--                <input name="utime" type="text" id="utime" placeholder="Choose Time" class="cs_time">-->
+  <!--                <span><i class="fa-solid fa-clock"></i></span>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <!--            <div class="col-md-6">-->
+  <!--              <div class="cs_input_field">-->
+  <!--                <input name="udate" type="text" id="udate" placeholder="Booking Date" class="cs_date">-->
+  <!--                <span><i class="fa-solid fa-calendar"></i></span>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <!--            <div class="col-md-12">-->
+  <!--              <div class="cs_input_field">-->
+  <!--                <textarea name="note" rows="2"  placeholder="Note" class="cs_form_field cs_radius_5"></textarea>-->
+  <!--                <span><i class="fa-solid fa-note-sticky"></i></span>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <!--            <div class="col-md-12">-->
+  <!--              <button type="submit" class="cs_btn cs_style_1 cs_size_md cs_accent_bg_v1 cs_white_color cs_fs_18 cs_semibold">Make An Appointment</button>-->
+  <!--            </div>-->
+  <!--          </form>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--  <div class="cs_height_120 cs_height_lg_80"></div>-->
+  <!--</section>-->
+  <!-- End FAQ Section -->
+  <!-- Start Testimonial Section -->
+   <div class="cs_height_120 cs_height_lg_80"></div>
+   <div class="container">
+      <div class="cs_section_heading cs_style_1 text-center">
+        <h3 class="cs_section_title_up cs_accent_color_v1 cs_semibold cs_fs_24">Our Patient Testimonials        </h3>
+        <h2 class="cs_section_title cs_semibold cs_fs_45 wow fadeInUp mb-0" style="font-size: 15px;">
+          Listen to some of our happy patients share their experience & path to pain free life with Gaman pain management centers.
+        </h2>
+      </div>
+      <div class="cs_tabs position-relative">
+        <ul class="cs_tab_links cs_style_2 cs_mp0">
+          <li class="active"><a href="#tab_1"><img src="assets/images/Testimonials/Testimonials1.png" alt="Icon"></a></li>
+          <li><a href="#tab_2"> <img src="assets/images/Testimonials/Testimonials2.png" alt="Icon"></a></li>
+          <li><a href="#tab_3"><img src="assets/images/Testimonials/Testimonials3.png" alt="Icon"></a></li>
+          <li><a href="#tab_4"><img src="assets/images/Testimonials//Testimonials4.png" alt="Icon"></a></li>
+          <!-- <li><a href="#tab_5"><img src="assets/images/avatar_5.png" alt="Icon"></a></li>
+          <li><a href="#tab_6"><img src="assets/images/avatar_6.png" alt="Icon"></a></li>
+          <li><a href="#tab_7"><img src="assets/images/avatar_8.png" alt="Icon"></a></li> -->
+        </ul>
+        <div class="cs_height_50 cs_height_lg_30"></div>
+        <div class="tab-content">
+          <div id="tab_1" class="cs_tab active">
+           <div class="cs_testimonial cs_style_1">
+            <div class="cs_testimonial_thumb cs_center">
+              <img src="assets/images/Testimonials/Testimonials1.png" alt="Avatar">
+            </div>
+            <div class="cs_testimonial_info cs_accent_bg_v1 cs_white_color cs_radius_5 text-center">
+              <blockquote>
+                <!-- "We are very pleased with the way Besnik handled our purchase of a lake home. He was prompt, friendly, and very knowledgeable. He followed up on any and all concerns. -->
+
+                My father is suffering from knee pain since 10 years. Present my dad age is 60 years. I couldn't get any pain relief after visiting multiple hospital. My friend advised to visit gaman pain management...
+              </blockquote>
+              <h3 class="cs_testimonial_title cs_fs_24 cs_medium cs_white_color">Subhash Kumar</h3>
+              <div class="cs_rating_container">
+                <div class="cs_rating" data-rating="5">
+                  <div class="cs_rating_percentage"></div>
+                </div>
+              </div>
+            </div>
+           </div>
+          </div>
+          <div id="tab_2" class="cs_tab">
+           <div class="cs_testimonial cs_style_1">
+            <div class="cs_testimonial_thumb cs_center">
+              <img src="assets/images/Testimonials/Testimonials2.png" alt="Avatar">
+            </div>
+            <div class="cs_testimonial_info cs_accent_bg_v1 cs_white_color cs_radius_5 text-center">
+              <blockquote>
+                I was suffering from cervical spondylitis pain for ages. A lot of doctor visits later I decided to try non surgical treatment and a friend of mine referred me Gaman pain management. They gave me...              </blockquote>
+              <h3 class="cs_testimonial_title cs_fs_24 cs_medium cs_white_color">Padmavathi Kolla</h3>
+              <div class="cs_rating_container">
+                <div class="cs_rating" data-rating="4">
+                  <div class="cs_rating_percentage"></div>
+                </div>
+              </div>
+            </div>
+           </div>
+          </div>
+          <div id="tab_3" class="cs_tab">
+           <div class="cs_testimonial cs_style_1">
+            <div class="cs_testimonial_thumb cs_center">
+              <img src="assets/images/Testimonials/Testimonials3.png" alt="Avatar">
+            </div>
+            <div class="cs_testimonial_info cs_accent_bg_v1 cs_white_color cs_radius_5 text-center">
+              <blockquote>
+                
+                By the time I visited gaman pain management centre, I had very bad back pain disturbing walking, sleeping and routine daily activities. Pain doctor over here suggested me injection treatment.After which I am able to...              
+              </blockquote>
+              <h3 class="cs_testimonial_title cs_fs_24 cs_medium cs_white_color">KALYANI</h3>
+              <div class="cs_rating_container">
+                <div class="cs_rating" data-rating="5">
+                  <div class="cs_rating_percentage"></div>
+                </div>
+              </div>
+            </div>
+           </div>
+          </div>
+          <div id="tab_4" class="cs_tab">
+           <div class="cs_testimonial cs_style_1">
+            <div class="cs_testimonial_thumb cs_center">
+              <img src="assets/images/Testimonials/Testimonials4.png" alt="Avatar">
+            </div>
+            <div class="cs_testimonial_info cs_accent_bg_v1 cs_white_color cs_radius_5 text-center">
+              <blockquote> 
+                By the time I visited gaman pain management centre, I had very bad back pain disturbing walking, sleeping and routine daily activities. Pain doctor over here suggested me injection treatment.After which I am able to...              
+              </blockquote>
+              <h3 class="cs_testimonial_title cs_fs_24 cs_medium cs_white_color">
+                Pavan Lucky              </h3>
+              <div class="cs_rating_container">
+                <div class="cs_rating" data-rating="5">
+                  <div class="cs_rating_percentage"></div>
+                </div>
+              </div>
+            </div>
+           </div>
+          </div>
+          <!-- <div id="tab_5" class="cs_tab">
+           <div class="cs_testimonial cs_style_1">
+            <div class="cs_testimonial_thumb cs_center">
+              <img src="assets/images/avatar_5.png" alt="Avatar">
+            </div>
+            <div class="cs_testimonial_info cs_accent_bg_v1 cs_white_color cs_radius_5 text-center">
+              <blockquote>"We are very pleased with the way Besnik handled our purchase of a lake home. He was prompt, friendly, and very knowledgeable. He followed up on any and all concerns.</blockquote>
+              <h3 class="cs_testimonial_title cs_fs_24 cs_medium cs_white_color">Becky Nelson</h3>
+              <div class="cs_rating_container">
+                <div class="cs_rating" data-rating="5">
+                  <div class="cs_rating_percentage"></div>
+                </div>
+              </div>
+            </div>
+           </div>
+          </div> -->
+          <!-- <div id="tab_6" class="cs_tab">
+           <div class="cs_testimonial cs_style_1">
+            <div class="cs_testimonial_thumb cs_center">
+              <img src="assets/images/avatar_6.png" alt="Avatar">
+            </div>
+            <div class="cs_testimonial_info cs_accent_bg_v1 cs_white_color cs_radius_5 text-center">
+              <blockquote>"We are very pleased with the way Besnik handled our purchase of a lake home. He was prompt, friendly, and very knowledgeable. He followed up on any and all concerns.</blockquote>
+              <h3 class="cs_testimonial_title cs_fs_24 cs_medium cs_white_color">Becky Nelson</h3>
+              <div class="cs_rating_container">
+                <div class="cs_rating" data-rating="5">
+                  <div class="cs_rating_percentage"></div>
+                </div>
+              </div>
+            </div>
+           </div>
+          </div>
+          <div id="tab_7" class="cs_tab">
+           <div class="cs_testimonial cs_style_1">
+            <div class="cs_testimonial_thumb cs_center">
+              <img src="assets/images/avatar_8.png" alt="Avatar">
+            </div>
+            <div class="cs_testimonial_info cs_accent_bg_v1 cs_white_color cs_radius_5 text-center">
+              <blockquote>"We are very pleased with the way Besnik handled our purchase of a lake home. He was prompt, friendly, and very knowledgeable. He followed up on any and all concerns.</blockquote>
+              <h3 class="cs_testimonial_title cs_fs_24 cs_medium cs_white_color">Becky Nelson</h3>
+              <div class="cs_rating_container">
+                <div class="cs_rating" data-rating="5">
+                  <div class="cs_rating_percentage"></div>
+                </div>
+              </div>
+            </div>
+           </div>
+          </div> -->
+        </div>
+      </div>
+   </div>
+   <div class="cs_height_120 cs_height_lg_80"></div>
+  <!-- End Testimonial Section -->
+  <!-- Start Video Block Section -->
+  <section class="cs_video_block cs_style_1 cs_primary_bg cs_bg_filed" data-src="assets/images/video_block_bg_1.jpeg">
+    <div class="cs_height_120 cs_height_lg_80"></div>
+    <div class="container">
+      <div class="cs_section_heading cs_style_1 text-center">
+        <h3 class="cs_section_title_up cs_white_color cs_semibold cs_fs_30">Need a Doctor for Check-up?</h3>
+        <h2 class="cs_section_title cs_semibold cs_fs_45 cs_white_color wow fadeInDown mb-0">We Provide The Best Medical Services <br> For You And Your Family.</h2>
+      </div>
+    <!--  <div class="cs_height_50 cs_height_lg_40"></div>-->
+   
+    <!--  <a href="https://youtu.be/Sd2_QK25HA0?si=nbzUzTSAfRn8d3VR" class="cs_player_btn cs_center cs_accent_bg_v1 cs_radius_50 cs_video_open">-->
+    <!--    <img src="assets/images/icons/play_icon.svg" alt="Icon">-->
+    <!--  </a>-->
+      
+ 
+      
+      
+    <!--</div>-->
+
+<!--<div class="cs_height_50 cs_height_lg_40">-->
+
+<!-- Play button that redirects to YouTube -->
+<!--<a href="https://youtu.be/Sd2_QK25HA0?si=nbzUzTSAfRn8d3VR" -->
+<!--   target="_blank" -->
+<!--   class="cs_player_btn cs_center cs_accent_bg_v1 cs_radius_50 cs_video_open">-->
+<!--    <img src="assets/images/icons/play_icon.svg" alt="Play Icon">-->
+<!--</a>-->
+<!--</div>-->
+
+    
+    <div class="cs_height_120 cs_height_lg_80"></div>
+  </section>
+  <!-- End Video Block Section -->
+  <!-- Start Contact Section -->
+  <section id="contact">
+    <div class="cs_height_120 cs_height_lg_80"></div>
+    <div class="container">
+      <div class="cs_section_heading cs_style_1 text-center">
+        <h3 class="cs_section_title_up cs_accent_color_v1 cs_semibold cs_fs_24 wow fadeInDown">Need Any Help?</h3>
+        <h2 class="cs_section_title cs_semibold cs_fs_45 mb-0">Get in Touch With Us</h2>
+      </div>
+      <div class="cs_height_45 cs_height_lg_30"></div>
+      <form class="cs_contact_form row cs_gap_y_24" id="contactForm">
+    
+        <div class="col-md-6 position-relative">
+          <input type="text" name="nameid" class="cs_form_field cs_radius_5" required>
+          <label>Name</label>
+        </div>
+        <div class="col-md-6 position-relative">
+          <input type="text" name="phoneid" class="cs_form_field cs_radius_5" required>
+          <label>Phone</label>
+        </div>
+        <div class="col-md-6 position-relative">
+          <input type="text" name="emailid" class="cs_form_field cs_radius_5" required>
+          <label>Email Address</label>
+        </div>
+    
+        <div class="col-md-6 position-relative">
+          <input type="text" name="subject" class="cs_form_field cs_radius_5" required>
+          <label>Subject</label>
+        </div>
+        <div class="col-md-12 position-relative">
+          <textarea name="message" rows="6" class="cs_form_field cs_radius_5" required></textarea>
+          <label>Message</label>
+        </div>
+        <div class="col-md-12 text-md-center">
+          <button type="submit" class="cs_btn cs_style_1 cs_size_md cs_accent_bg_v1 cs_white_color cs_fs_18 cs_semibold">Send Message</button>
+        </div>
+      </form>
+      
+
+
+    <!--     <form id="contact-form" action="contact_form_handler.php" method="POST">-->
+    <!--  <div class="col-md-6 position-relative">-->
+    <!--    <input type="text" name="name" class="cs_form_field cs_radius_5" required>-->
+    <!--    <label>Name</label>-->
+    <!--  </div>-->
+    <!--  <div class="col-md-6 position-relative">-->
+    <!--    <input type="text" name="phone" class="cs_form_field cs_radius_5" required>-->
+    <!--    <label>Phone</label>-->
+    <!--  </div>-->
+    <!--  <div class="col-md-6 position-relative">-->
+    <!--    <input type="email" name="email" class="cs_form_field cs_radius_5" required>-->
+    <!--    <label>Email Address</label>-->
+    <!--  </div>-->
+    <!--  <div class="col-md-6 position-relative">-->
+    <!--    <input type="text" name="subject" class="cs_form_field cs_radius_5" required>-->
+    <!--    <label>Subject</label>-->
+    <!--  </div>-->
+    <!--  <div class="col-md-12 position-relative">-->
+    <!--    <textarea name="message" rows="6" class="cs_form_field cs_radius_5" required></textarea>-->
+    <!--    <label>Message</label>-->
+    <!--  </div>-->
+    <!--  <div class="col-md-12 text-md-center">-->
+    <!--    <button type="submit" class="cs_btn cs_style_1 cs_size_md cs_accent_bg_v1 cs_white_color cs_fs_18 cs_semibold">Send Message</button>-->
+    <!--  </div>-->
+    <!--</form>-->
+    
+    
+      <div id="toast-success" class="toast">Message sent successfully!</div>
+<div id="toast-error" class="toast">Failed to send the message.</div>
+    </div>
+    <div class="cs_height_120 cs_height_lg_80"></div>
+  </section>
+  <!-- End Contact Section -->
+  <!-- Start Newsletter Section -->
+  <section class="cs_newsletter_1_wrap">
+    <div class="container">
+      <div class="cs_newsletter cs_style_1 cs_accent_bg_v1 wow fadeIn">
+        <div class="cs_newsletter_left d-flex gap-4">
+          <div class="cs_newsletter_icon">
+            <img src="assets/images/icons/envelop_icon.png" alt="Icon">
+          </div>
+          <h2 class="cs_newsletter_title cs_fs_24 cs_semibold mb-0 cs_white_color">Latest Updates Subscribe To <br> Our Newsletter</h2>
+        </div>
+        <form action="#" class="cs_newsletter_form">
+          <input type="text" name="email" class="cs_newsletter_form_field cs_radius_2" placeholder="Enter your Email">
+          <button type="submit" class="cs_btn cs_style_1 cs_fs_18 cs_medium cs_white_bg cs_accent_color_v1">Submit</button>
+        </form>
+     <div id="toast" style="display:none; position: fixed; top: 20px; right: 20px; background-color: #333; color: white; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
+    Subscribe Successful
+</div>
+      </div>
+    </div>
+  </section>
+  <!-- End Newsletter Section -->
+  <!-- Start Blog Section -->
+  <!-- <section class="cs_bg_filed cs_accent_v1_light" data-src="assets/images/blog_bg.jpeg" id="blog">
+    <div class="cs_height_120 cs_height_lg_80"></div>
+    <div class="container">
+      <div class="cs_section_heading cs_style_1 text-center">
+        <h3 class="cs_section_title_up cs_accent_color_v1 cs_semibold cs_fs_24">Our Blog update</h3>
+        <h2 class="cs_section_title cs_semibold cs_fs_45 mb-0">Recent Important Stories <br> Daily Updated
+        </h2>
+      </div>
+      <div class="cs_height_45 cs_height_lg_30"></div>
+      <div class="row cs_gap_y_30">
+        <div class="col-lg-4 wow fadeInLeft">
+          <article class="cs_post cs_style_1">
+            <a href="blog-details-right-sidebar.html" class="cs_post_thumb cs_radius_5 cs_zoom position-relative">
+              <img src="assets/images/post_1.jpeg" alt="Post Thumb" class="cs_zoom_in">
+              <div class="cs_posted_by cs_accent_bg_v1 cs_white_color cs_radius_2">
+                December 17, 2023</div>
+            </a>
+            <div class="cs_post_info cs_white_bg">
+              <div class="cs_post_meta_wrap">
+                <div class="cs_post_meta">
+                  <div class="cs_post_meta_icon cs_accent_color_v1">
+                    <i class="fa-regular fa-circle-user"></i>
+                  </div>
+                  <a href="blog-details-right-sidebar.html" class="mb-0">By Admin</a>
+                </div>
+                <div class="cs_post_meta">
+                  <div class="cs_post_meta_icon cs_accent_color_v1">
+                    <img src="assets/images/icons/comment_icon.svg" alt="Icon">
+                  </div>
+                  <a href="blog-details-right-sidebar.html" class="mb-0">(05)</a>
+                </div>
+              </div>
+                <h3 class="cs_post_title cs_fs_24 cs_semibold">
+                 <a href="blog-details-right-sidebar.html">How Does Science Help In Dental Surgery Research</a>
+                </h3>
+                <p class="cs_post_subtitle">We provide immigration service in all over country and universities. Sed semper sed</p>
+                <hr>
+                <a href="blog-details-right-sidebar.html" class="cs_post_btn cs_primary_color cs_medium">Read More<img src="assets/images/icons/arrow_icon.svg" alt="Icon">
+                </a>
+            </div>
+          </article>
+        </div>
+        <div class="col-lg-4">
+          <article class="cs_post cs_style_1">
+            <a href="blog-details-right-sidebar.html" class="cs_post_thumb cs_radius_5 cs_zoom position-relative">
+              <img src="assets/images/post_2.jpeg" alt="Post Thumb" class="cs_zoom_in">
+              <div class="cs_posted_by cs_accent_bg_v1 cs_white_color cs_radius_2">December 17, 2023</div>
+            </a>
+            <div class="cs_post_info cs_white_bg">
+              <div class="cs_post_meta_wrap">
+                <div class="cs_post_meta">
+                  <div class="cs_post_meta_icon cs_accent_color_v1">
+                    <i class="fa-regular fa-circle-user"></i>
+                  </div>
+                  <a href="blog-details-right-sidebar.html" class="mb-0">By Admin</a>
+                </div>
+                <div class="cs_post_meta">
+                  <div class="cs_post_meta_icon cs_accent_color_v1">
+                    <img src="assets/images/icons/comment_icon.svg" alt="Icon">
+                  </div>
+                  <a href="blog-details-right-sidebar.html" class="mb-0">(05)</a>
+                </div>
+              </div>
+                <h3 class="cs_post_title cs_fs_24 cs_semibold">
+                 <a href="blog-details-right-sidebar.html">The Day I'd Spent At The Square Medical Facility</a>
+                </h3>
+                <p class="cs_post_subtitle">We provide immigration service in all over country and universities. Sed semper sed</p>
+                <hr>
+                <a href="blog-details-right-sidebar.html" class="cs_post_btn cs_primary_color cs_medium">
+                  Read More<img src="assets/images/icons/arrow_icon.svg" alt="Icon">
+                </a>
+            </div>
+          </article>
+        </div>
+        <div class="col-lg-4 wow fadeInRight">
+          <article class="cs_post cs_style_1">
+            <a href="blog-details-right-sidebar.html" class="cs_post_thumb cs_radius_5 cs_zoom position-relative">
+              <img src="assets/images/post_3.jpeg" alt="Post Thumb" class="cs_zoom_in">
+              <div class="cs_posted_by cs_accent_bg_v1 cs_white_color cs_radius_2">December 27, 2023</div>
+            </a>
+            <div class="cs_post_info cs_white_bg">
+              <div class="cs_post_meta_wrap">
+                <div class="cs_post_meta">
+                  <div class="cs_post_meta_icon cs_accent_color_v1">
+                    <i class="fa-regular fa-circle-user"></i>
+                  </div>
+                  <a href="blog-details-right-sidebar.html" class="mb-0">By Admin</a>
+                </div>
+                <div class="cs_post_meta">
+                  <div class="cs_post_meta_icon cs_accent_color_v1">
+                    <img src="assets/images/icons/comment_icon.svg" alt="Icon">
+                  </div>
+                  <a href="blog-details-right-sidebar.html" class="mb-0">(15)</a>
+                </div>
+              </div>
+                <h3 class="cs_post_title cs_fs_24 cs_semibold">
+                 <a href="blog-details-right-sidebar.html">The Success Of Treatment Of Stroke Patients Raises</a>
+                </h3>
+                <p class="cs_post_subtitle">We provide immigration service in all over country and universities. Sed semper sed</p>
+                <hr>
+                <a href="blog-details-right-sidebar.html" class="cs_post_btn cs_primary_color cs_medium">
+                  Read More<img src="assets/images/icons/arrow_icon.svg" alt="Icon">
+                </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="cs_height_120 cs_height_lg_80"></div>
+  </section> -->
+  <!-- End Blog Section -->
+  <!-- Start footer -->
+  <footer class="cs_footer cs_style_1 cs_bg_filed cs_primary_bg" data-src="assets/images/footer_bg.jpeg">
+    <div class="container">
+      <div class="cs_height_95 cs_height_lg_65"></div>
+      <div class="cs_footer_main">
+        <div class="row cs_gap_y_30">
+          <div class="col-lg-3">
+            <div class="cs_footer_widget cs_text_widget">
+              <img src="assets/images/gaman-logo.png" alt="Logo">
+              <p class="cs_fs_18 cs_white_color">Gaman Pain Management Centers is one of the best pain hospitals in Hyderabad, India. Led by Dr. Kartheek Telagareddy & Dr. Bhargavi Rayapureddy, leading pain specialists in Hyderabad.</p>
+              <h3 class="cs_fs_24 cs_white_color cs_semibold">Follow us on</h3>
+              <div class="cs_social_btns cs_style_1 cs_white_color">
+                <a href="https://www.facebook.com/GamanPainCare" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <!-- <a href="linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a> -->
+                <a href="https://www.youtube.com/@GamanPainCare" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/gaman_paincare" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+            <div class="col-lg-2">
+              <div class="cs_footer_widget cs_menu_widget">
+                  <h3 class="cs_footer_widget_title cs_fs_24 cs_semibold cs_white_color">Our Services</h3>
+                  <ul class="cs_fs_18 cs_white_color cs_fs_18 cs_medium cs_mp0">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#doctors">Our Team</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <!-- <li><a href="#gallery">Our Projects</a></li> -->
+                  </ul>
+                </div>
+              </div>
+         
+
+
+              <div class="col-lg-3">
+                <div class="cs_footer_widget cs_menu_widget">
+                  <h3 class="cs_footer_widget_title cs_fs_24 cs_semibold cs_white_color">Services</h3>
+                  <ul class="cs_contact_info cs_fs_18 cs_white_color cs_medium cs_mp0">
+                    <li>Knee Pain </li>
+
+                    <li>Back Pain </li>
+                    <li>Neck Pain   </li>
+                    <li>Shoulder Pain   </li>
+                    <li>Neuropathic Pain
+                    </li>
+
+                    <li>
+                      Trigeminal Neuralgia
+                    </li>
+
+
+                  </ul>
+                </div>
+              </div>
+
+              <!-- <div class="col-lg-4">
+              
+
+
+               <h1 style="color: #ffffff; font-size: 22px;"> Contact Us</h1>
+
+
+  <div style="display: flex;">
+    <a href="mailto:gamanpainclinics@gmail.com" target="_blank">
+    </a>
+    <p style="color: #ffffff; margin-left: 10px;">gamanpainclinics@gmail.com</p>
+  </div>
+  
+              
+<p  style="color: #ffffff;"> Manasa Sarovar, near Central Staff Quarters, Indra Nagar, Madhava Reddy Colony, Gachibowli, Hyderabad, Telangana 500032
+</p>
+
+              </div> -->
+
+
+
+              <div class="col-lg-4">
+                <h1 style="color: #ffffff; font-size: 22px;">Contact Us</h1>
+              
+                <!-- Gmail icon and email link -->
+                <div style="display: flex; align-items: center;">
+                  <a href="mailto:gamanpainclinics@gmail.com" target="_blank" style="text-decoration: none;">
+                    <i class="fa fa-envelope" style="color: #f17732; font-size: 24px;"></i>
+                  </a>
+                  <p style="color: #ffffff; margin-left: 10px;">gamanpainclinics@gmail.com</p>
+                </div>
+              
+                <!-- Location icon and address -->
+                <div style="display: flex; align-items: center; margin-top: 10px;">
+                  <i class="fa fa-map-marker" style="color: #f17732; font-size: 24px;"></i>
+                  <p style="color: #ffffff; margin-left: 10px;">
+                    Manasa Sarovar, near Central Staff Quarters, Indra Nagar, Madhava Reddy Colony, Gachibowli, Hyderabad, Telangana 500032
+                  </p>
+                </div>
+
+
+
+
+
+                     <div style="display: flex; align-items: center; margin-top: 10px;">
+    <a href="tel:+919666525208" style="text-decoration: none;">
+      <i class="fa fa-phone" style="color: #f17732; font-size: 24px;"></i>
+    </a>
+    <p style="color: #ffffff; margin-left: 10px;">+91 9666525208</p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+    <div class="cs_footer_bottom">
+      <div class="container">
+        <div class="cs_footer_bottom_text">
+          <div class="cs-copyright cs_fs_18 cs_white_color"> 
+              ©2024 Gaman Pain Care Pvt Ltd. All rights reserved 
+            <!-- All Right Reserved Copyright &copy; 2024 -->
+             <!-- <a
+           
+              href="" target="_blank" class="cs_profile_link cs_accent_color_v1">Laralink</a> -->
+          </div>
+          <ul class="cs_footer_links cs_mp0  cs_fs_18 cs_white_color">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+<!--</script>-->
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+    
+    
+     formData.forEach((value, key) => {
+        console.log(key, value);  // key is the name of the form field, value is the field's value
+    });
+
+console.log(formData,'formData')
+    fetch('send_email.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById('toast-success').style.display = 'block';
+            setTimeout(() => document.getElementById('toast-success').style.display = 'none', 3000);
+                        document.getElementById('contactForm').reset();
+
+        } else {
+            document.getElementById('toast-error').style.display = 'block';
+            setTimeout(() => document.getElementById('toast-error').style.display = 'none', 3000);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('toast-error').style.display = 'block';
+    });
+});
+
+</script>
+
+<script>
+    // Get the form and toast container
+const form = document.querySelector('.cs_newsletter_form');
+const toast = document.getElementById('toast');
+
+// Handle form submit event
+form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission to simulate success
+
+    // Show the toast message
+    showToast();
+});
+
+// Function to show the toast
+function showToast() {
+    // Display the toast
+    toast.style.display = 'block';
+
+    // Hide the toast after 3 seconds
+    setTimeout(function() {
+        toast.style.display = 'none';
+    }, 3000);
+}
+
+// Optionally, show toast on input click (for any input element in the form)
+const inputs = form.querySelectorAll('input');
+inputs.forEach(input => {
+    input.addEventListener('click', showToast);
+});
+
+</script>
+
+  <script src="assets/js/jquery-3.6.0.min.js"></script>
+  <script src="assets/js/wow.min.js"></script>
+  <script src="assets/js/jquery.slick.min.js"></script>
+  <script src="assets/js/light_gallery.min.js"></script>
+  <script src="assets/js/odometer.js"></script>
+  <script src="assets/js/isotope.pkg.min.js"></script>
+  <script src="assets/js/jquery-timepicker.min.js"></script>
+  <script src="assets/js/jquery-ui.min.js"></script>
+  <script src="assets/js/select2.min.js"></script>
+  <script src="assets/js/animated-text.min.js"></script>
+  <script src="assets/js/ripple.min.js"></script>
+  <script src="assets/js/YTPlayer.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  </body>
+</html>
